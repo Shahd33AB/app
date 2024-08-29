@@ -1,0 +1,28 @@
+<div class="contact-card-container">
+   
+    <div *ngIf="contactMe.length > 0; else noContactInfo">
+      <div *ngFor="let contact of contactMe" class="contact-card">
+        <h3>Contact Me</h3>
+        <p>If you want to reach out, feel free to connect with me on any of the platforms below:</p>
+        
+        <a [href]="'mailto:' + contact.email" target="_blank" aria-label="Email">
+          <i class="fas fa-envelope contact-icon"></i>
+        </a>
+        
+        <a [href]="contact.linkedin" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin contact-icon"></i>
+        </a>
+        
+        <a [href]="contact.github" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github contact-icon"></i>
+        </a>
+      </div>
+    </div>
+    
+    <ng-template #noContactInfo>
+      <div class="no-contact-info">
+        <p>No contact information available at the moment.</p>
+      </div>
+    </ng-template>
+  </div>
+  

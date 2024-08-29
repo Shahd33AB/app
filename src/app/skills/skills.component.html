@@ -1,0 +1,27 @@
+<div class="skills-container">
+  <div class="skills-section">
+    <h2>Technical Skills</h2>
+    <div *ngIf="technicalSkills.length > 0; else noTechnicalSkills" class="skills-grid">
+      <app-skill-child
+        *ngFor="let skill of technicalSkills"
+        [skill]="skill"
+      ></app-skill-child>
+    </div>
+    <ng-template #noTechnicalSkills>
+      <p class="no-skills-message">No technical skills available.</p>
+    </ng-template>
+  </div>
+
+  <div class="skills-section">
+    <h2>Soft Skills</h2>
+    <div *ngIf="softSkills.length > 0; else noSoftSkills" class="skills-grid">
+      <app-skill-child
+        *ngFor="let skill of softSkills"
+        [skill]="skill"
+      ></app-skill-child>
+    </div>
+    <ng-template #noSoftSkills>
+      <p class="no-skills-message">No soft skills available.</p>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+.skills-container {
+  background-color: #2b2f7d; 
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.skills-section {
+  margin-bottom: 30px;
+}
+
+.skills-section h2 {
+  font-size: 1.8em;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.skills-grid app-skill-child {
+  flex: 1 1 calc(50% - 20px); 
+  max-width: calc(50% - 20px); 
+}
+
+.no-skills-message {
+  font-size: 1.2rem;
+  color: black; 
+  text-align: center;
+  padding: 1rem;
+}
+

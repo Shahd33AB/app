@@ -1,0 +1,223 @@
+
+<div class="dashboard-header">
+  <div class="welcome-message">
+    <h2 class="msg">Hi, Admin! <span class="wave">👋</span></h2>
+  </div>
+  <button class="logout-button" (click)="logOut()">Logout</button>
+</div>
+
+
+<div class="dashboard">
+  <!-- Courses -->
+  <div class="dashboard-section animated-card">
+    <h2>Courses</h2>
+    <form (ngSubmit)="selectedCourse ? editCourse() : addCourse()">
+      <label for="courseTitle">Title</label>
+      <input id="courseTitle" type="text" [(ngModel)]="courseForm.title" name="title" required />
+
+      <label for="courseDescription">Description</label>
+      <textarea id="courseDescription" [(ngModel)]="courseForm.description" name="description"></textarea>
+
+      <label for="courseStartDate">Start Date</label>
+      <input id="courseStartDate" type="date" [(ngModel)]="courseForm.startDate" name="startDate" />
+
+      <label for="courseEndDate">End Date</label>
+      <input id="courseEndDate" type="date" [(ngModel)]="courseForm.endDate" name="endDate" />
+
+      <label for="courseCategory">Category</label>
+      <select id="courseCategory" [(ngModel)]="courseForm.category" name="category">
+        <option value="Web Programming">Web Programming</option>
+        <option value="Mobile Programming">Mobile Programming</option>
+        <!-- <option value="Internship">Internship</option> -->
+        <option value="Machine Learning">Machine Learning</option>
+        <option value="Hackathon">Hackathon</option>
+      </select>
+
+      <button type="submit">{{ selectedCourse ? 'Update Course' : 'Add Course' }}</button>
+      <button type="button" (click)="clearEdit('course')" *ngIf="selectedCourse">Cancel Edit</button>
+    </form>
+
+    <div class="cards-grid">
+      <h2>Courses List</h2>
+      <div *ngFor="let course of courses" class="card course-card">
+        <h4>{{ course.title }}</h4>
+        <p><strong>Description:</strong> {{ course.description }}</p>
+        <p><strong>Start Date:</strong> {{ course.startDate | date }}</p>
+        <p><strong>End Date:</strong> {{ course.endDate | date }}</p>
+        <button (click)="setCourseForEdit(course)">Edit</button>
+        <button (click)="deleteCourse(course._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <div class="dashboard-section animated-card">
+    <h2>Projects</h2>
+    <form (ngSubmit)="selectedProject ? editProject() : addProject()">
+      <label for="projectName">Name</label>
+      <input id="projectName" type="text" [(ngModel)]="projectForm.name" name="name" required />
+
+      <label for="projectDescription">Description</label>
+      <textarea id="projectDescription" [(ngModel)]="projectForm.description" name="description"></textarea>
+
+      <label for="githubLink">GitHub Link</label>
+      <input id="githubLink" type="url" [(ngModel)]="projectForm.githubLink" name="githubLink" placeholder="Enter GitHub repository URL" required />
+
+      <button type="submit">{{ selectedProject ? 'Update Project' : 'Add Project' }}</button>
+      <button type="button" (click)="clearEdit('project')" *ngIf="selectedProject">Cancel Edit</button>
+    </form>
+
+    <div class="cards-grid">
+      <h2>Projects List</h2>
+      <div *ngFor="let project of projects" class="card project-card">
+        <h4>{{ project.name }}</h4>
+        <p><strong>Description:</strong> {{ project.description }}</p>
+        <p><strong>GitHub:</strong> <a [href]="project.githubLink" target="_blank">{{ project.githubLink }}</a></p>
+        <button (click)="setProjectForEdit(project)">Edit</button>
+        <button (click)="deleteProject(project._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills -->
+<div class="dashboard-section animated-card">
+  <h2>{{ selectedSkill ? 'Edit Skill' : 'Add New Skill' }}</h2>
+
+  <form (ngSubmit)="selectedSkill ? editSkill() : addSkill()">
+    <div>
+      <label for="name">Skill Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="skillForm.name" required />
+    </div>
+
+    <div>
+      <label for="type">Skill Type:</label>
+      <select id="type" name="type" [(ngModel)]="skillForm.type" required>
+        <option value="Technical">Technical</option>
+        <option value="Soft">Soft</option>
+      </select>
+    </div>
+
+    <div *ngIf="skillForm.type === 'Technical'">
+      <label for="proficiency">Proficiency (1-5):</label>
+      <input type="number" id="proficiency" name="proficiency" [(ngModel)]="skillForm.proficiency" min="1" max="5" />
+    </div>
+
+    <button type="submit">{{ selectedSkill ? 'Update Skill' : 'Add Skill' }}</button>
+    <button type="button" (click)="clearEdit('skill')" *ngIf="selectedSkill">Cancel Edit</button>
+  </form>
+
+  <div *ngIf="skills.length > 0">
+    <h2>Skills List</h2>
+    <div class="skills-grid">
+      <div class="card skill-card" *ngFor="let skill of skills">
+        <h4>{{ skill.name }}</h4>
+        <p><strong>Type:</strong> {{ skill.type }}</p>
+        <p *ngIf="skill.type === 'Technical'"><strong>Proficiency:</strong> {{ skill.proficiency }}</p>
+        <button (click)="setSkillForEdit(skill)">Edit</button>
+        <button (click)="deleteSkill(skill._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- About Me -->
+  <div class="dashboard-section animated-card">
+    <h2>About Me</h2>
+    <form (ngSubmit)="selectedAboutMe ? editAboutMe() : addAboutMe()">
+      <label for="aboutName">Name</label>
+      <input id="aboutName" type="text" [(ngModel)]="aboutMeForm.name" name="name" required />
+
+      <label for="aboutBio">Bio</label>
+      <textarea id="aboutBio" [(ngModel)]="aboutMeForm.bio" name="bio" required></textarea>
+
+      <label for="aboutEmail">Email</label>
+      <input id="aboutEmail" type="email" [(ngModel)]="aboutMeForm.email" name="email" required />
+
+      <button type="submit">{{ selectedAboutMe ? 'Update About Me' : 'Add About Me' }}</button>
+      <button type="button" (click)="clearEdit('aboutMe')" *ngIf="selectedAboutMe">Cancel Edit</button>
+    </form>
+
+    <div class="cards-grid">
+      <div *ngFor="let aboutMe of aboutMe" class="card aboutme-card">
+        <h4>{{ aboutMe.name }}</h4>
+        <p><strong>Bio:</strong> {{ aboutMe.bio }}</p>
+        <p><strong>Email:</strong> {{ aboutMe.email }}</p>
+        <button (click)="setAboutMeForEdit(aboutMe)">Edit</button>
+        <button (click)="deleteAboutMe(aboutMe._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+<!-- Contact Me -->
+<div class="dashboard-section animated-card">
+  <h2>Contact Me</h2>
+  <form (ngSubmit)="selectedContactMe ? editContactMe() : addContactMe()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input 
+        id="email" 
+        type="email" 
+        [(ngModel)]="contactMeForm.email" 
+        name="email" 
+        placeholder="Enter your email address"
+        required
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="linkedin">LinkedIn</label>
+      <input 
+        id="linkedin" 
+        type="url" 
+        [(ngModel)]="contactMeForm.linkedin" 
+        name="linkedin" 
+        placeholder="Enter your LinkedIn profile URL"
+        required
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="github">GitHub</label>
+      <input 
+        id="github" 
+        type="url" 
+        [(ngModel)]="contactMeForm.github" 
+        name="github" 
+        placeholder="Enter your GitHub profile URL"
+        required
+      />
+    </div>
+  
+    <div class="form-actions">
+      <button type="submit" class="submit-btn">
+        {{ selectedContactMe ? 'Update Contact Me' : 'Add Contact Me' }}
+      </button>
+      <button 
+        type="button" 
+        class="cancel-btn" 
+        (click)="clearEdit('contactMe')" 
+        *ngIf="selectedContactMe"
+      >
+        Cancel Edit
+      </button>
+    </div>
+  </form>
+
+  <div class="contact-list">
+    <h3>Contact List</h3>
+    <ul>
+      <li *ngFor="let contactMe of contactMe" class="contact-item">
+        <p><strong>Email:</strong> {{ contactMe.email }}</p>
+        <p><strong>LinkedIn:</strong> <a [href]="contactMe.linkedin" target="_blank">{{ contactMe.linkedin }}</a></p>
+        <p><strong>GitHub:</strong> <a [href]="contactMe.github" target="_blank">{{ contactMe.github }}</a></p>
+        <div class="contact-actions">
+          <button (click)="setContactMeForEdit(contactMe)" class="edit-btn">Edit</button>
+          <button (click)="deleteContactMe(contactMe._id)" class="delete-btn">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+</div>

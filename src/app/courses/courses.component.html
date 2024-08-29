@@ -1,0 +1,27 @@
+
+<section id="courses" class="courses-mf pt-5 route">
+  <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center pt-5">
+            <h3 class="title-a text-light">Courses</h3>
+            <p class="subtitle-a text-light">Here are some of the courses & Internships I took</p>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <ng-container *ngIf="courses && courses.length; else noCourses">
+          <div class="col-md-4" *ngFor="let course of courses">
+            <app-course-child [course]="course"></app-course-child>
+          </div>
+        </ng-container>
+        <ng-template #noCourses>
+          <div class="col-12">
+            <p class="text-center">No courses available at the moment.</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+  

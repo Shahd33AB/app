@@ -1,0 +1,92 @@
+.course-box {
+  background-color: #fff;
+  padding: 1.5rem; 
+  border-radius: 1rem;
+  margin: 1rem auto; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+  max-width: 280px; 
+  flex: 1 1 auto; 
+  display: flex;
+  flex-direction: column; 
+}
+
+.course-box {
+  height: 300px; 
+  box-sizing: border-box; 
+}
+
+.course-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: #afdaec; 
+}
+
+
+.course-box .course-ico {
+  margin-bottom: 1rem;
+  color: #1e1e1e;
+  text-align: center;
+  flex: 0 1 auto; 
+}
+
+.course-box .ico-circle {
+  transition: all 0.5s ease;
+  font-size: 4rem;
+  display: inline-block;
+  padding: 1rem;
+  background: #f7f7f7;
+  border-radius: 50%;
+}
+
+.course-box .course-content {
+  text-align: center;
+  flex: 1 1 auto; 
+}
+
+.course-box .c-title {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0;
+  color: #333;
+}
+
+.course-box .c-description {
+  color: #4e4e4e;
+  margin: 0.5rem 0; 
+}
+
+.course-box .c-dates {
+  color: #333;
+  margin-top: auto; 
+}
+
+.icon-programming {
+  color: #0078ff;
+}
+
+.icon-mobile {
+  color: #28a745;
+}
+
+.icon-internship {
+  color: #ffc107;
+}
+
+.icon-machinelearning {
+  color: #17a2b8;
+}
+
+@media (max-width: 10000px) {
+  .course-box {
+    height: auto; 
+    width: auto; 
+    max-width: 90%; 
+    min-width: 200px; 
+  }
+
+  .ico-circle {
+    font-size: 3rem;
+  }
+}

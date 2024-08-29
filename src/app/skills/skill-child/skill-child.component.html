@@ -1,0 +1,5 @@
+<div class="skill-card">
+  <h3>{{ skill.name }}</h3>
+  <p><strong>Type:</strong> {{ skill.type }}</p>
+  <p *ngIf="skill.type === 'Technical'"><strong>Proficiency:</strong> {{ skill.proficiency }}</p>
+</div>

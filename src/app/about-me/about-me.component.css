@@ -1,0 +1,89 @@
+body {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff; 
+}
+
+.about-me-mf {
+  padding: 5rem 0;
+  background-color:#2b2f7d;
+  text-align: center; 
+  
+}
+
+.about-me-card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.about-me-card {
+  background-color: #fff;
+  color: #333;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 1s ease-in-out;
+  max-width: 800px;
+  width: 100%;
+}
+
+.about-me-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.title-box {
+  margin-bottom: 2rem;
+}
+
+.title-a {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.subtitle-a {
+  font-size: 1.4rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.line-mf {
+  width: 60px;
+  height: 4px;
+  background: #0078ff;
+  margin: 1rem auto;
+  border-radius: 2px;
+}
+
+.about-me-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.about-me-bio {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-me-email {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,27 @@
+<section id="about-me" class="about-me-mf route">
+  <div class="container">
+    <div class="about-me-card-wrapper">
+      <div class="about-me-card">
+        <div class="title-box text-center pt-5">
+          <h3 class="title-a">About Me</h3>
+          <p class="subtitle-a">information about me</p>
+          <div class="line-mf"></div>
+        </div>
+        <ng-container *ngIf="aboutMe.length > 0; else noAboutMe">
+          <div class="text-center">
+          
+            <h2 class="about-me-title">{{ aboutMe[0].name }}</h2>
+            <p class="about-me-bio">{{ aboutMe[0].bio }}</p>
+            <p class="about-me-email">Email: {{ aboutMe[0].email }}</p>
+          </div>
+        </ng-container>
+       
+        <ng-template #noAboutMe>
+          <div class="text-center">
+            <p>No information available at the moment.</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</section>

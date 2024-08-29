@@ -1,0 +1,28 @@
+<section id="projects" class="projects-mf sect-pt4 pb-5 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="title-box text-center pt-5">
+            <h3 class="title-a">
+              Projects
+            </h3>
+            <p class="subtitle-a">
+              Some projects that I have worked on
+            </p>
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div *ngIf="projects.length === 0" class="col-12 text-center no-projects-message">
+          No projects available.
+        </div>
+        <app-project-child 
+          *ngFor="let project of projects"
+          [project]="project"
+          class="col-md-4">
+        </app-project-child>
+      </div>
+    </div>
+  </section>
+  

@@ -1,0 +1,28 @@
+<footer class="footer-container">
+    <div *ngIf="contactMe.length > 0" class="footer-contact-section">
+      <div *ngFor="let contact of contactMe" class="footer-contact-card">
+        <a [href]="'mailto:' + contact.email" target="_blank" aria-label="Email">
+          <i class="fas fa-envelope footer-contact-icon"></i>
+        </a>
+        
+        <a [href]="contact.linkedin" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin footer-contact-icon"></i>
+        </a>
+
+      
+        <a [href]="contact.github" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github footer-contact-icon"></i>
+        </a>
+      </div>
+    </div>
+  
+    <div class="footer-info">
+      <p class="footer-copyright">
+        &copy; 2024 Copyright Portfolio. All Rights Reserved
+      </p>
+      <p class="footer-design-credit">
+        Designed by Shahd Hassan
+      </p>
+    </div>
+  </footer>
+  

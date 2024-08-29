@@ -1,0 +1,18 @@
+<div class="course-box">
+    <div class="course-ico">
+      <span class="ico-circle">
+        <i class="{{ getIconClass(course.category) }}"></i>
+      </span>
+    </div>
+    <div class="course-content">
+      <h2 class="c-title">{{ course.title }}</h2>
+      <p class="c-description text-center">
+        {{ course.description }}
+      </p>
+      <p class="c-dates text-center">
+        <strong>Start Date:</strong> {{ course.startDate | date:'longDate' }}<br>
+        <strong>End Date:</strong> {{ course.endDate | date:'longDate' }}
+      </p>
+    </div>
+  </div>
+  
